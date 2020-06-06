@@ -1,0 +1,68 @@
+version: "2.3"
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: brave_db
+    restart: on-failure
+    cpus: "0.5"
+    mem_reservation: "250m"
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: brave_cane
+      MYSQL_USER: "brave"
+      MYSQL_PASSWORD: "brave"
+    ports:
+      - "23307:3306"
+    networks:
+      - brave-cane-network
+  web:
+    container_name: brave_web
+    hostname: brave_web
+    build:
+      context: .
+      args:
+        RUN_ENVIRONMENT: development
+    restart: on-failure
+    cpus: "0.4"
+    mem_reservation: "120m"
+    environment:
+      FLASK_DEBUG: 1
+    links: 
+      - db
+    depends_on:
+      - db
+    ports:
+      - "8000:5000"
+    networks:
+      - brave-cane-network
+    volumes:
+      - .:/app/brave_cane
+    command: ["wait-for-it", "db:3306", "--"]
+
+networks:
+  brave-cane-network:
+    driver: "bridge"
+
+# networks:
+#     default:
+#       external:
+#           name: brave-cane-network
+    
+    # volumes:
+    #   - ./data:/var/lib/mysql
+
+#   graphql:
+#     build:
+#       context: .
+#       args:
+#         RUN_ENVIRONMENT: development
+#     networks:
+#       - ze
+#     ports:
+#       - "8883:8888"
+#     volumes:
+#       - ${PWD}:/app/brave_cane
+#     entrypoint: ["/bin/sh", "/app/brave_cane/graphql_entrypoint.sh"]
