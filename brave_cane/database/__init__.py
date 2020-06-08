@@ -6,6 +6,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 from brave_cane.conector.mysql import mysql_engine
 
+engine = mysql_engine('brave_cane')
+
 session = scoped_session(sessionmaker(
     autocommit=False,
     autoflush=False,

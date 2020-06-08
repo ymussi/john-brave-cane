@@ -1,8 +1,9 @@
+from brave_cane.api import api
+from brave_cane.api.partner import schemas
+from brave_cane.api.partner.controller import Partner
 from flask_restplus import Resource
 from flask import request, jsonify
 from flask_accepts import accepts
-from brave_cane.api import api
-from brave_cane.api.partner import schemas
 
 import logging
 import json
@@ -18,11 +19,10 @@ class RegisterPartner(Resource):
         """
         Perform a registration for new partner.
         """
+        pdvs = request.json
+        pdv = Partner().save(pdvs)
 
-        data = request.json
-        response = data
-
-        return response
+        return pdv
 
 @ns.route('/<string:id>')
 class GetPartnerByID(Resource):
