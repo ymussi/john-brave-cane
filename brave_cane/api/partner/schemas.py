@@ -21,4 +21,3 @@ class Pdvs(Schema):
 
 class PartnerByID(Schema):
     id = fields.Integer(description='Id do parceiro.', required=True)
-

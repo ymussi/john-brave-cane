@@ -9,3 +9,4 @@ class Partner(Model):
     ownerName = Column(String(244))
     document = Column(String(244))
     coverageArea = Column(JSON())
+    address = Column(JSON())
