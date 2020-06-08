@@ -6,7 +6,7 @@ class Address(Schema):
 
 class CoverageArea(Schema):
     type = fields.String(required=True)
-    coordinates = fields.List(fields.Integer(required=True))
+    coordinates = fields.List(fields.List(fields.List(fields.List(fields.Integer(required=True)))))
 
 class Partner(Schema):
     id = fields.Integer(description='Id do parceiro.', required=True)
@@ -15,3 +15,10 @@ class Partner(Schema):
     document = fields.String(required=True)
     coverageArea = fields.Nested(CoverageArea)
     address = fields.Nested(Address)
+
+class Pdvs(Schema):
+    pdvs = fields.List(fields.Nested(Partner))
+
+class PartnerByID(Schema):
+    id = fields.Integer(description='Id do parceiro.', required=True)
+
