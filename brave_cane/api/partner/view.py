@@ -21,7 +21,6 @@ class RegisterPartner(Resource):
         """
         pdvs = request.json
         pdv = Partner().save(pdvs)
-
         return pdv
 
 @ns.route('/<string:id>')
@@ -30,10 +29,8 @@ class GetPartnerByID(Resource):
         """
         Get a specific partner by id
         """
-
-        response = id
-
-        return response.json
+        pdv = Partner().get_by_id(id)
+        return pdv
 
 @ns.route('/<string:lng>/<string:lat>')
 class GetPartnerByCoordinates(Resource):
@@ -41,7 +38,5 @@ class GetPartnerByCoordinates(Resource):
         """
         Search the nearest partner with a specific location (coordinates lng and lat).
         """
-
         response = {'lng': lng, 'lat': lat}
-
         return response
