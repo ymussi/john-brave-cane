@@ -1,6 +1,7 @@
 from brave_cane.api import api
 from brave_cane.config import config_db
 from brave_cane.api.healthcheck.view import ns as healthcheck
+from brave_cane.api.partner.view import ns as partner
 from flask import Flask, Blueprint
 from flask_cors import CORS
 
@@ -19,6 +20,7 @@ def create_app(config_filename=None):
     blueprint = Blueprint('login', __name__)
     api.init_app(blueprint)
     api.add_namespace(healthcheck, "/healthcheck")
+    api.add_namespace(partner, "/partner")
     
 
     app.register_blueprint(blueprint)

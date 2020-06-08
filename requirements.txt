@@ -6,14 +6,19 @@ alembic==1.2.1
 ariadne==0.6.0
 requests==2.22.0
 werkzeug==0.16.1
-Flask==0.12.2
+Flask>=1.0.2
 Flask-Cors==3.0.7
 Flask-GraphQL==2.0.1
 graphene==2.1.8
 flask-restplus==0.13.0
 flask-sqlalchemy==2.4.1
+flask_accepts==0.15.5
+Flask-Seeder
+Faker==4.1.0
 configparser==3.5.0
 sqlalchemy-utils==0.33.9
+geojson
+marshmallow
 
 ddtrace[opentracing]
 

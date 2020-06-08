@@ -1,7 +1,5 @@
 from ddtrace import config, patch_all
 
-# Override service name, default 'flask'
-# config.flask['service_name'] = 'brave_cane'
 config.flask['analytics_enabled'] = True
 
 patch_all(flask=True)

@@ -3,7 +3,7 @@ version: "2.3"
 services:
   db:
     image: mysql:5.7
-    container_name: brave_db
+    container_name: brave_db_dev
     restart: on-failure
     cpus: "0.5"
     mem_reservation: "250m"
@@ -14,17 +14,20 @@ services:
       MYSQL_DATABASE: brave_cane
       MYSQL_USER: "brave"
       MYSQL_PASSWORD: "brave"
+    volumes:
+      - ./scripts/database:/docker-entrypoint-initdb.d
     ports:
       - "23307:3306"
     networks:
-      - brave-cane-network
+      - brave-cane-dev-network
   web:
-    container_name: brave_web
+    container_name: brave_web_dev
     hostname: brave_web
     build:
       context: .
+      dockerfile: DockerfileDev
       args:
-        RUN_ENVIRONMENT: development
+        RUN_ENVIRONMENT: docker
     restart: on-failure
     cpus: "0.4"
     mem_reservation: "120m"
@@ -34,16 +37,16 @@ services:
       - db
     depends_on:
       - db
-    ports:
+    ports:  
       - "8000:5000"
     networks:
-      - brave-cane-network
+      - brave-cane-dev-network
     volumes:
       - .:/app/brave_cane
     command: ["wait-for-it", "db:3306", "--"]
 
 networks:
-  brave-cane-network:
+  brave-cane-dev-network:
     driver: "bridge"
 
 # networks:
