@@ -19,7 +19,7 @@ depends_on = None
 def upgrade():
     # CREATE TABLE PARTNER
     op.create_table('partner',
-                    sa.Column('id', sa.Integer(), nullable=False, autoincrement=True),
+                    sa.Column('id', sa.Integer(), nullable=False, primary_key=True, autoincrement=True),
                     sa.Column('tradingName', sa.String(244)),
                     sa.Column('ownerName', sa.Integer()),
                     sa.Column('document', sa.Integer()),

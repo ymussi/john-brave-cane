@@ -6,7 +6,7 @@ class Address(Schema):
 
 class CoverageArea(Schema):
     type = fields.String(required=True)
-    coordinates = fields.List(fields.List(fields.List(fields.List(fields.Integer(required=True)))))
+    coordinates = fields.List(fields.List(fields.List(fields.List(fields.Float(required=True)))))
 
 class Partner(Schema):
     id = fields.Integer(description='Id do parceiro.', required=True)

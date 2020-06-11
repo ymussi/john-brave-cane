@@ -1,3 +1,4 @@
+from brave_cane.api.partner.service import get_nearest_partner
 from brave_cane.database.models import PDV
 from brave_cane.database import session
 from brave_cane.conector.mysql import CadastroDBContext
@@ -6,6 +7,8 @@ class Partner:
     
     def save(self, pdvs):
         for pdv in pdvs['pdvs']:
+            if pdv['id'] == 0:
+                return {"Status": True, "msg": "Please fill in all the information to register your partner."}
             pdv = PDV(**pdv)
             session.add(pdv)
         try:
@@ -18,7 +21,21 @@ class Partner:
 
     def get_by_id(self, id):
         obj = PDV.get(id=id)
-        return obj.as_dict()
+        if obj:
+            return obj.as_dict()
+        else:
+            return {"Status": False, "msg": "Partner not found or not registered."}
 
-    def get_by_coordinates(self, lng, lat):
-        pass
+    def get_by_coordinates(self, lat, lng):
+        objs = PDV.get_all()
+        pdvs = []
+        for obj in objs:
+            pdv = {"id": obj.id,
+                   "coverageArea": obj.coverageArea,
+                   "address": obj.address}
+            pdvs.append(pdv)
+        
+        client_coordinates = {"lat": float(lat),  "lng": float(lng)}
+        pdv = get_nearest_partner(pdvs, client_coordinates)
+
+        return pdv

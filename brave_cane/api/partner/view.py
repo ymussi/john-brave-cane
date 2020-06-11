@@ -32,11 +32,11 @@ class GetPartnerByID(Resource):
         pdv = Partner().get_by_id(id)
         return pdv
 
-@ns.route('/<string:lng>/<string:lat>')
+@ns.route('/<string:lat>/<string:lng>')
 class GetPartnerByCoordinates(Resource):
-    def get(self, lng, lat):
+    def get(self, lat, lng):
         """
         Search the nearest partner with a specific location (coordinates lng and lat).
         """
-        response = {'lng': lng, 'lat': lat}
-        return response
+        nearest_partner = Partner().get_by_coordinates(lat, lng)
+        return nearest_partner

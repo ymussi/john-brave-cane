@@ -81,6 +81,11 @@ class CRUDMixin:
     def get(cls, **kwargs):
         instance = session.query(cls).filter_by(**kwargs).first()
         return instance
+    
+    @classmethod
+    def get_all(cls, **kwargs):
+        instance = session.query(cls).all()
+        return instance
 
     @classmethod
     def get_or_create(cls, **kwargs):
