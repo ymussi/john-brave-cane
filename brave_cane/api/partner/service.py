@@ -50,17 +50,17 @@ def check_partner_area(pdvs, client):
 def get_nearest_partner(partners, client):
     nearest = check_partner_area(partners, client)
     distances = []
+    for pdv in nearest:
+        partner = PDV.get(id=pdv).as_dict()
+        coordinates = partner['address']['coordinates']
+        p = {'lat': float(coordinates[0]), 'lng': float(coordinates[1])}
+        distance = distance_between_points(client, p)
+        distances.append({'id': pdv, 'distance': distance})
+        
     if distances:
-        for pdv in nearest:
-            partner = PDV.get(id=pdv).as_dict()
-            coordinates = partner['address']['coordinates']
-            p = {'lat': float(coordinates[0]), 'lng': float(coordinates[1])}
-            distance = distance_between_points(client, p)
-            distances.append({'id': pdv, 'distance': distance})
-            
         nearest = sorted(distances, key=lambda k: k['distance'])[0]
         nearest_partner = PDV.get(id=nearest['id']).as_dict()
-    
+        
         return nearest_partner
     else:
         return {'status': False, 'message': 'Coordinates outside the coverage area of our partners.'}
