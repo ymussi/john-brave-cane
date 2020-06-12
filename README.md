@@ -1,5 +1,7 @@
 ## Description
 
+This is a simple REST API that has as functions to register partners and, calculate which partner is closer, from the geographic coordinates informed by the user.
+
 ## Projects Resources
 
 - Languege: Python 3.6
@@ -27,8 +29,7 @@ $ python run.py
 
 - runing migrations
 
-Assuming you already have the MySQL 5.7 configured,
-create a database named "brave_cane" and run the migrations with the commands below.
+Assuming you already have the MySQL 5.7 configured, create a database named "brave_cane" and run the migrations with the commands below.
 
 ```bash
 $ cd brave_cane/
@@ -39,12 +40,11 @@ The API Doc can be accessed at: http://localhost:5000/docs
 
 ## Running with docker container
 
-Using the docker compose, the web services, database and migrations,
-will be configured and started automatically in the container through the following command line:
+Using the docker compose, the web services, database and migrations, will be configured and started automatically in the container through the following command line:
 
 `$ docker-compose up`
 
-The API Doc can be accessed at: http://localhost:5000/docs
+The API Doc can be accessed at: http://localhost:8000/docs
 
 ## Database Server
 
