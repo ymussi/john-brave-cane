@@ -4,9 +4,10 @@ from brave_cane.database.models import PDV
 from brave_cane.api.partner.controller import PartnerManager
 
 from test.runner import clear_db
-from unittest import TestCase
+import unittest
 
-class TesteRegisterPartner(TestCase):
+
+class TesteRegisterPartner(unittest.TestCase):
     
     def setUp(self):
         self.app_context = app.test_request_context()
@@ -19,7 +20,7 @@ class TesteRegisterPartner(TestCase):
 
     def test_if_save_method_saves_partners_on_database(self):
         partner_mock = {
-            "id": 1, 
+            "id": 13, 
             "tradingName": "Teste",
             "ownerName": "Teste",
             "document": "00000000000191",
@@ -28,7 +29,7 @@ class TesteRegisterPartner(TestCase):
                 "coordinates": [[[[-23.562256297264703, -46.66099548339844],
                         [-23.562256297264703, -46.662025451660156],
                         [-23.57358496022532, -46.6644287109375],
-                        [-23.58853100613786,-46.65721893310547],
+                        [-23.58853100613786, -46.65721893310547],
                         [-23.585069967982925, -46.63747787475586],
                         [-23.58082220549596, -46.63061141967774],
                         [-23.568392777659398, -46.631126403808594],
@@ -60,15 +61,15 @@ class TesteRegisterPartner(TestCase):
         session.add(pdv)
         session.commit()
         
-        _model = PDV.get(id=1)
+        _model = PDV.get(id=13)
         self.assertIsNotNone(_model)
         
     def test_if_method_get_partner_by_coordinates(self):
         lat_mock = float(-23.599542792889437)
-        lng_mock =  float(-46.67910575866699)
+        lng_mock = float(-46.67910575866699)
         
-        pdv = PartnerManager().get_by_coordinates(lat_mock, lng_mock)
+        PartnerManager().get_by_coordinates(lat_mock, lng_mock)
         
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    unittest.main()

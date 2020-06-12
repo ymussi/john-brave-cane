@@ -1,10 +1,10 @@
 #!/bin/bash
 
 entrypoint(){
-    cd /app/brave_cane/brave_cane
-    # upgrade database
-    echo "upgrade database ...."
-    alembic upgrade head
+    # cd /app/brave_cane/brave_cane
+    # # upgrade database
+    # echo "upgrade database ...."
+    # alembic upgrade head
 
     cd ..
     # run webserver

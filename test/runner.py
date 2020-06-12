@@ -1,5 +1,5 @@
 import os
-import sys
+
 
 def clear_db(session, base):
     if os.getenv('FLASK_ENV') not in ['development']:

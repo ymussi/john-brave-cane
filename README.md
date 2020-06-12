@@ -27,20 +27,11 @@ $ cd brave_cane/
 $ python run.py
 ```
 
-- runing migrations
-
-Assuming you already have the MySQL 5.7 configured, create a database named "brave_cane" and run the migrations with the commands below.
-
-```bash
-$ cd brave_cane/
-$ alembic upgrade head
-```
-
 The API Doc can be accessed at: http://localhost:5000/docs
 
 ## Running with docker container
 
-Using the docker compose, the web services, database and migrations, will be configured and started automatically in the container through the following command line:
+Using the docker compose, the web services and database, will be configured and started automatically in the container through the following command line:
 
 `$ docker-compose up`
 
@@ -57,3 +48,13 @@ The database server will be exposed externally on:
 -   database: brave_cane
 
 
+## Runing migrations
+
+```bash
+$ cd brave_cane/
+$ alembic upgrade head
+```
+
+## To Test
+
+`$ FLASK_ENV=development python -m unittest -v`

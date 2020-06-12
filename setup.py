@@ -6,7 +6,7 @@ with open("requirements.txt") as req:
 setup(name='john-brave-cane',
         version='0.0.1',
         description='',
-        url='',
+        url='https://github.com/ymussi/john-brave-cane.git',
         author='Yuri Mussi',
         packages=['brave_cane'],
         zip_safe=False
