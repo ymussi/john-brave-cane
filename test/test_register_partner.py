@@ -8,25 +8,26 @@ import unittest
 
 
 class TesteRegisterPartner(unittest.TestCase):
-    
+
     def setUp(self):
         self.app_context = app.test_request_context()
         self.app_context.push()
         app.test_client()
         self.app = app
-    
+
     def tearDown(self):
         clear_db(session, Base)
 
     def test_if_save_method_saves_partners_on_database(self):
         partner_mock = {
-            "id": 13, 
+            "id": 13,
             "tradingName": "Teste",
             "ownerName": "Teste",
             "document": "00000000000191",
-            "coverageArea": { 
-                "type": "MultiPolygon", 
-                "coordinates": [[[[-23.562256297264703, -46.66099548339844],
+            "coverageArea": {
+                "type": "MultiPolygon",
+                "coordinates": [
+                    [[[-23.562256297264703, -46.66099548339844],
                         [-23.562256297264703, -46.662025451660156],
                         [-23.57358496022532, -46.6644287109375],
                         [-23.58853100613786, -46.65721893310547],
@@ -49,27 +50,28 @@ class TesteRegisterPartner(unittest.TestCase):
                         [-23.595924736349982, -46.66614532470703],
                         [-23.57924892524502, -46.66322708129883],
                         [-23.57437163664494, -46.68039321899414],
-                        [-23.574686305893117, -46.681766510009766]]]]
+                        [-23.574686305893117, -46.681766510009766]]]
+                        ]
                 },
-            "address": { 
+            "address": {
                 "type": "Point",
                 "coordinates": [-23.58748249, -46.67235334]
                 }
             }
-        
+
         pdv = PDV(**partner_mock)
         session.add(pdv)
         session.commit()
-        
+
         _model = PDV.get(id=13)
         self.assertIsNotNone(_model)
-        
+
     def test_if_method_get_partner_by_coordinates(self):
         lat_mock = float(-23.599542792889437)
         lng_mock = float(-46.67910575866699)
-        
+
         PartnerManager().get_by_coordinates(lat_mock, lng_mock)
-        
+
 
 if __name__ == "__main__":
     unittest.main()
