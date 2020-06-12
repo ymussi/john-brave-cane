@@ -48,12 +48,12 @@ The API Doc can be accessed at: http://localhost:8000/docs
 
 ## Database Server
 
-- The database server will be exposed externally on:
+The database server will be exposed externally on:
 
-host: localhost
-username: brave
-password: brave
-port: 23307
-database: brave_cane
+- host: localhost
+- username: brave
+- password: brave
+- port: 23307
+-   database: brave_cane
 
 
