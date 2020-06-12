@@ -6,7 +6,7 @@ This is a simple REST API that has as functions to register partners and, calcul
 
 - Languege: Python 3.6
 - Package manager: pip
-- Main dependencies: [_Flask 1.0.2_](https://flask.palletsprojects.com/en/1.1.x/), [_Flask-Restplus 0.13.0_](https://flask-restplus.readthedocs.io/en/stable/), [_SQLAlchemy 1.3.8_](https://docs.sqlalchemy.org/en/13/orm/tutorial.html), [_Alembic_](https://alembic.sqlalchemy.org/en/latest/tutorial.html) 1.2.1
+- Main dependencies: [_Flask 1.0.2_](https://flask.palletsprojects.com/en/1.1.x/), [_Flask-Restplus 0.13.0_](https://flask-restplus.readthedocs.io/en/stable/), [_SQLAlchemy 1.3.8_](https://docs.sqlalchemy.org/en/13/orm/tutorial.html), [_Alembic 1.2.1_](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
 - Tests: [_unittest_](https://docs.python.org/3/library/unittest.html)
 - DB: [_MySQL 5.7_](https://dev.mysql.com/doc/refman/5.7/en/)
 
@@ -61,9 +61,9 @@ $ alembic upgrade head
 
 ## Working
 
-- Perform a registration for new partner
+Perform a registration for new partner
 
-Send a POST request to endpoint: **/partner** with a payload like this JSON:
+- Send a POST request to endpoint: **/partner** with a payload like this JSON:
 
 ```javascript
 {
@@ -111,13 +111,15 @@ Send a POST request to endpoint: **/partner** with a payload like this JSON:
 }
 ```
 
-- Get a specific partner by id
+Get a specific partner by id
 
-send a GET request to endpoint _/partner/{id}_ informing the "id" of the registered partner.
+- send a GET request to endpoint **/partner/{id}** informing the "id" of the registered partner.
 
-- Search the nearest partner with a specifc location coordinates
+Search the nearest partner with a specifc location coordinates
 
-send a GET request to endpoint _/partner/{lat}/{lng}
+- send a GET request to endpoint **/partner/{lat}/{lng}**
 
-- lat = latitude
-- lng = longitude
+```javascript
+lat = latitude
+lng = longitude
+```
