@@ -1,9 +1,3 @@
-from ddtrace import config, patch_all
-
-config.flask['analytics_enabled'] = True
-
-patch_all(flask=True)
-
 from brave_cane.app import create_app
 
 app = create_app()

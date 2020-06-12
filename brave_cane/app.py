@@ -24,7 +24,7 @@ def create_app(config_filename=None):
     
 
     app.register_blueprint(blueprint)
-
+    
     # plug teardown routines
     app.teardown_appcontext(shutdown_session)
     return app

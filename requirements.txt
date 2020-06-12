@@ -7,19 +7,10 @@ werkzeug==0.16.1
 Flask>=1.0.2
 Flask-Cors==3.0.7
 Flask-GraphQL==2.0.1
-graphene==2.1.8
 flask-restplus==0.13.0
 flask-sqlalchemy==2.4.1
 flask_accepts==0.15.5
-Faker==4.1.0
 configparser==3.5.0
 sqlalchemy-utils==0.33.9
 marshmallow
 shapely
-
-## test requirements
-vcrpy==4.0.2
-pytest==5.4.1
-pytest-asyncio==0.11.0
-pytest-cov==2.8.1
-unittest

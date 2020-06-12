@@ -20,6 +20,7 @@ services:
       - "23307:3306"
     networks:
       - brave-cane-dev-network
+      
   web:
     container_name: brave_web_dev
     hostname: brave_web

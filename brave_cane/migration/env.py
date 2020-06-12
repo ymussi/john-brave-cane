@@ -6,7 +6,6 @@ from sqlalchemy import pool
 
 from alembic import context
 from brave_cane.database import Base
-from brave_cane.config import config_db
 from brave_cane.config import read_config
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

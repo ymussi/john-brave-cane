@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 entrypoint(){
     cd /app/brave_cane/brave_cane
     # upgrade database

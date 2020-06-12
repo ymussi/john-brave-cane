@@ -1,9 +1,9 @@
-from brave_cane.api.partner.service import get_nearest_partner
+from brave_cane.api.partner.service import PartnerServices
 from brave_cane.database.models import PDV
 from brave_cane.database import session
 from brave_cane.conector.mysql import CadastroDBContext
 
-class Partner:
+class PartnerManager:
     
     def save(self, pdvs):
         for pdv in pdvs['pdvs']:
@@ -36,6 +36,6 @@ class Partner:
             pdvs.append(pdv)
         
         client_coordinates = {"lat": float(lat),  "lng": float(lng)}
-        pdv = get_nearest_partner(pdvs, client_coordinates)
+        pdv = PartnerServices().get_nearest_partner(pdvs, client_coordinates)
 
         return pdv
