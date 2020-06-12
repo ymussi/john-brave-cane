@@ -18,6 +18,8 @@ and after that choice your runing method:
 
 - Running out of docker container
 
+`docker-compose up`
+
 - Running with docker container
 
 ## Swagger API Doc
