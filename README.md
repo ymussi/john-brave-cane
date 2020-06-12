@@ -115,11 +115,15 @@ Get a specific partner by id
 
 - send a GET request to endpoint **/partner/{id}** informing the "id" of the registered partner.
 
+```javascript
+id = "id of the registered partner"
+```
+
 Search the nearest partner with a specifc location coordinates
 
 - send a GET request to endpoint **/partner/{lat}/{lng}**
 
 ```javascript
-lat = latitude
-lng = longitude
+lat = "latitude"
+lng = "longitude"
 ```
