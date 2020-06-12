@@ -49,24 +49,3 @@ services:
 networks:
   brave-cane-dev-network:
     driver: "bridge"
-
-# networks:
-#     default:
-#       external:
-#           name: brave-cane-network
-    
-    # volumes:
-    #   - ./data:/var/lib/mysql
-
-#   graphql:
-#     build:
-#       context: .
-#       args:
-#         RUN_ENVIRONMENT: development
-#     networks:
-#       - ze
-#     ports:
-#       - "8883:8888"
-#     volumes:
-#       - ${PWD}:/app/brave_cane
-#     entrypoint: ["/bin/sh", "/app/brave_cane/graphql_entrypoint.sh"]

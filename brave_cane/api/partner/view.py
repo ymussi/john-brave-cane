@@ -9,7 +9,7 @@ import logging
 import json
 
 log = logging.getLogger(__name__)
-ns = api.namespace('partner', description='')
+ns = api.namespace('partner', description='Registration and partner search.')
 
 
 @ns.route('/')
