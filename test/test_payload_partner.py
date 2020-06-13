@@ -1,7 +1,4 @@
-from brave_cane.run import app
 from brave_cane.api.partner.schemas import Partner
-
-from test.runner import clear_db
 import unittest
 
 
