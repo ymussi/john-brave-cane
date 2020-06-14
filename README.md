@@ -2,6 +2,12 @@
 
 This is a simple REST API that has as functions to register partners and, calculate which partner is closer, from the geographic coordinates informed by the user.
 
+This API is implemented in production on an EC2 and its database on an RDS on the AWS.
+
+You can access it through the link: http://18.231.49.177:17020/docs
+
+NOTE: The instance is without ssl certificate because I am using the free version.
+
 ## Projects Resources
 
 - Languege: Python 3.6
@@ -124,6 +130,6 @@ Search the nearest partner with a specifc location coordinates
 - send a GET request to endpoint **/partner/{lat}/{lng}**
 
 ```javascript
-lat = "latitude"
-lng = "longitude"
+lat = -23.595542907714844
+lng = -46.63741527750914
 ```
