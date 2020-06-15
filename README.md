@@ -1,10 +1,10 @@
 ## Description
 
-This is a simple REST API that has as functions to register partners and, calculate which partner is closer, from the geographic coordinates informed by the user.
+This is a simple REST API / GraphiQL that has as functions to register partners and, calculate which partner is closer, from the geographic coordinates informed by the user.
 
 This API is implemented in production on an EC2 and its database on an RDS on the AWS.
 
-You can access it through the link: http://18.231.49.177:17020/docs
+You can access it through the link: http://18.231.49.177:17020/docs or http://18.231.49.177:17020/graphql 
 
 NOTE: The instance is without ssl certificate because I am using the free version.
 
@@ -12,7 +12,7 @@ NOTE: The instance is without ssl certificate because I am using the free versio
 
 - Languege: Python 3.6
 - Package manager: pip
-- Main dependencies: [_Flask 1.0.2_](https://flask.palletsprojects.com/en/1.1.x/), [_Flask-Restplus 0.13.0_](https://flask-restplus.readthedocs.io/en/stable/), [_SQLAlchemy 1.3.8_](https://docs.sqlalchemy.org/en/13/orm/tutorial.html), [_Alembic 1.2.1_](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
+- Main dependencies: [_Flask 1.0.2_](https://flask.palletsprojects.com/en/1.1.x/), [_Flask-Restplus 0.13.0_](https://flask-restplus.readthedocs.io/en/stable/), [_SQLAlchemy 1.3.8_](https://docs.sqlalchemy.org/en/13/orm/tutorial.html), [_Alembic 1.2.1_](https://alembic.sqlalchemy.org/en/latest/tutorial.html), [_Graphene 2.1.8_](https://docs.graphene-python.org/en/latest/), [_Flask-GraphQL 2.0.1_](https://pypi.org/project/Flask-GraphQL/)
 - Tests: [_unittest_](https://docs.python.org/3/library/unittest.html)
 - DB: [_MySQL 5.7_](https://dev.mysql.com/doc/refman/5.7/en/)
 
@@ -65,7 +65,7 @@ $ alembic upgrade head
 
 `$ FLASK_ENV=development python -m unittest -v`
 
-## Working
+## Working 
 
 Perform a registration for new partner
 

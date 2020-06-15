@@ -8,23 +8,23 @@ class PartnerManager:
     def save(self, pdvs):
         for pdv in pdvs['pdvs']:
             if pdv['id'] == 0:
-                return {"Status": True, "msg": "Please fill in all the information to register your partner."}
+                return {"status": True, "msg": "Please fill in all the information to register your partner."}
             pdv = PDV(**pdv)
             session.add(pdv)
         try:
             session.commit()    
-            return {"Status": True, "msg": "All pdvs have been registered."}
+            return {"status": True, "msg": "All pdvs have been registered."}
         except Exception as e:
             session.rollback()
             session.close()
-            return {"Status": False, "msg": "The pdvs couldn't be registered.", "err": str(e)}
+            return {"status": False, "msg": "The pdvs couldn't be registered.", "err": str(e)}
 
     def get_by_id(self, id):
         obj = PDV.get(id=id)
         if obj:
             return obj.as_dict()
         else:
-            return {"Status": False, "msg": "Partner not found or not registered."}
+            return {"status": False, "msg": "Partner not found or not registered."}
 
     def get_by_coordinates(self, lat, lng):
         objs = PDV.get_all()

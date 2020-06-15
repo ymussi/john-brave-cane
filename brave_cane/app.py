@@ -2,8 +2,10 @@ from brave_cane.api import api
 from brave_cane.config import config_db
 from brave_cane.api.healthcheck.view import ns as healthcheck
 from brave_cane.api.partner.view import ns as partner
+from brave_cane.api.partner.app_graphql import GQLPdv
 from flask import Flask, Blueprint
 from flask_cors import CORS
+from flask_graphql import GraphQLView
 
 
 def create_app(config_filename=None):
@@ -28,6 +30,14 @@ def create_app(config_filename=None):
     # plug teardown routines
     app.teardown_appcontext(shutdown_session)
     return app
+
+def create_graphql(_app):
+    _app.add_url_rule('/graphql', view_func=GraphQLView.as_view(
+        "graphql",
+        schema=GQLPdv,
+        graphiql=True
+    ))
+    return _app
 
 
 def shutdown_session(exception=None):
