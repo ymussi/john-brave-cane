@@ -33,7 +33,7 @@ $ cd brave_cane/
 $ python run.py
 ```
 
-The API Doc can be accessed at: http://localhost:5000/docs
+The API Doc can be accessed at: http://localhost:5000/docs or http://localhost:5000/graphql
 
 ## Running with docker container
 
@@ -41,7 +41,7 @@ Using the docker compose, the web services and database, will be configured and 
 
 `$ docker-compose up`
 
-The API Doc can be accessed at: http://localhost:8000/docs
+The API Doc can be accessed at: http://localhost:8000/docs or http://localhost:5000/graphql
 
 ## Database Server
 
