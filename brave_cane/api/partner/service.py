@@ -64,5 +64,5 @@ class PartnerServices:
             
             return nearest_partner
         else:
-            return {'status': False, 'message': 'Coordinates outside the coverage area of our partners.'}
+            return {'status': False, 'msg': 'Coordinates outside the coverage area of our partners.'}
     
