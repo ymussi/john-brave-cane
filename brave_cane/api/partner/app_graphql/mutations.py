@@ -2,6 +2,7 @@ from graphene import ObjectType, InputObjectType, Mutation, InputField, Field, A
 from brave_cane.api.partner.app_graphql.resolvers import PartnerResolvers
 from brave_cane.api.partner.app_graphql.schemas_graphql import GQLPartner
 from graphql import GraphQLError
+import re
 
 
 class GQLInputAddress(InputObjectType):
@@ -34,7 +35,7 @@ class RegisterPdv(Mutation):
                          document=document, coverageArea=coverageArea, address=address)
         
         if save_pdv['status'] == False:
-            raise GraphQLError(save_pdv['msg'])
+            raise GraphQLError(f'{save_pdv["msg"]} - err: {save_pdv["err"]}')
         
         return RegisterPdv(pdvs=pdv)
     
