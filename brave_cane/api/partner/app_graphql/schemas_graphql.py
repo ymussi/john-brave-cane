@@ -29,8 +29,9 @@ class QueryPdv(ObjectType):
             pdv = resolvers.pdv_resolver_get_by_id(id=id)
         else:
             pdv = resolvers.pdv_resolver_get_by_coordinates(lat, lng)
-            
-        if pdv['status'] == False:
-            raise GraphQLError(pdv['msg'])
+        
+        if "status" in pdv:
+            if pdv['status'] == False:
+                raise GraphQLError(pdv['msg'])
             
         return GQLPartner(**pdv)
