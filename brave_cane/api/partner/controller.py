@@ -8,12 +8,12 @@ import logging
 class PartnerManager:
     
     def save(self, pdvs):
-        for pdv in pdvs['pdvs']:
-            coverageArea = pdv['coverageArea']['coordinates']
-            address = pdv['address']['coordinates']
+        for pdv in pdvs.get('pdvs'):
+            coverageArea = pdv.get('coverageArea').get('coordinates')
+            address = pdv.get('address').get('coordinates')
             id_exists = PDV.get(id=(pdv['id']))
             
-            if pdv['id'] == 0:
+            if pdv.get('id') == 0:
                 raise BadRequest('Please fill in all the information to register your partner.') 
             
             if id_exists:
@@ -22,6 +22,14 @@ class PartnerManager:
             if len(address) < 2:
                 raise UnprocessableEntity(
                         "A partner Address list must have at least 2 coordinate parameters like this example: [-23.58, -46.67].")
+                
+            for k in pdv:
+                if k in('ownerName', 'document', 'tradingName'):
+                    if pdv[k] == 'string':
+                        raise BadRequest(f"Please fill in the field '{k}'")
+                if k in ('address', 'coverageArea'):
+                    if pdv[k].get('type') not in ('MultiPolygon', 'Point'):
+                        raise BadRequest(f"Please fill in the field '{k}': 'type' must be 'MultiPolygon' or 'Point'")
             
             for polygon in coverageArea:
                 if len(polygon[0]) < 3:
@@ -31,13 +39,13 @@ class PartnerManager:
                 for point in polygon[0]:
                     if len(point) < 2:
                         raise UnprocessableEntity(
-                            "A partner coordinate list must have at least 2 coordinate parameters like this example: [[[[-23.58, -46.67], [-23.58, -46.67], [-23.58, -46.67]]]].")
+                            "A partner' CoverageArea coordinate list must have at least 2 coordinate parameters like this example: [[[[-23.58, -46.67], [-23.58, -46.67], [-23.58, -46.67]]]].")
                 
             obj = PDV(**pdv)
             session.add(obj)
         try:
             logging.info(f'Data recorded in the database: {pdv}')
-            session.commit()    
+            session.commit() 
             return {"status": True, "msg": "All pdvs have been registered."}
         except Exception as e:
             session.rollback()

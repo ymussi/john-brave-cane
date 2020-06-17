@@ -20,7 +20,7 @@ class TesteRegisterPartner(unittest.TestCase):
 
     def test_if_save_method_saves_partners_on_database(self):
         partner_mock = {
-            "id": 13,
+            "id": 29,
             "tradingName": "Teste",
             "ownerName": "Teste",
             "document": "00000000000191",
@@ -67,8 +67,8 @@ class TesteRegisterPartner(unittest.TestCase):
         self.assertIsNotNone(_model)
 
     def test_if_method_get_partner_by_coordinates(self):
-        lat_mock = float(-23.599542792889437)
-        lng_mock = float(-46.67910575866699)
+        lat_mock = float(-23.566360473632812)
+        lng_mock = float(-46.6598049774399)
 
         PartnerManager().get_by_coordinates(lat_mock, lng_mock)
 
