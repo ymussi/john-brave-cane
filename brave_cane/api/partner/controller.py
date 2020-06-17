@@ -27,10 +27,11 @@ class PartnerManager:
                 if len(polygon[0]) < 3:
                     raise UnprocessableEntity(
                         "A partner's CoverageArea must have at least 3 lists of coordinates like this example: [[[[-23.58, -46.67], [-23.58, -46.67], [-23.58, -46.67]]]]")
-              
-                if len(polygon[0][0]) < 2:
-                    raise UnprocessableEntity(
-                        "A partner coordinate list must have at least 2 coordinate parameters like this example: [[[[-23.58, -46.67], [-23.58, -46.67], [-23.58, -46.67]]]].")
+                
+                for point in polygon[0]:
+                    if len(point) < 2:
+                        raise UnprocessableEntity(
+                            "A partner coordinate list must have at least 2 coordinate parameters like this example: [[[[-23.58, -46.67], [-23.58, -46.67], [-23.58, -46.67]]]].")
                 
             obj = PDV(**pdv)
             session.add(obj)
