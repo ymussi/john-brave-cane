@@ -3,6 +3,7 @@ from brave_cane.database.models import PDV
 from math import radians, cos, sin, asin, sqrt
 from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
+from werkzeug.exceptions import BadRequest, UnprocessableEntity
 
 class PartnerServices:
 
@@ -31,7 +32,7 @@ class PartnerServices:
         
         return (lat, lng)
     
-    def client_contains_area(self, partner, client):
+    def client_contains_area(self, partner, client):        
         point = Point(client)
         polygon = Polygon(partner)
         
@@ -64,5 +65,5 @@ class PartnerServices:
             
             return nearest_partner
         else:
-            return {'status': False, 'msg': 'Coordinates outside the coverage area of our partners.'}
+            raise BadRequest('Coordinates outside the coverage area of our partners.')
     

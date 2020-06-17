@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open("requirements.txt") as req:
     install_requires = req.read()
@@ -9,6 +9,7 @@ setup(
     description='',
     url='https://github.com/ymussi/john-brave-cane.git',
     author='Yuri Mussi',
-    packages=['brave_cane'],
+    author_email='ymussi@gmail.com',
+    packages=find_packages(),
     zip_safe=False
 ),
