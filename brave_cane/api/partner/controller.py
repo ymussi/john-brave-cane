@@ -11,11 +11,11 @@ class PartnerManager:
         for pdv in pdvs['pdvs']:
             coverageArea = pdv['coverageArea']['coordinates']
             address = pdv['address']['coordinates']
-            id_exists = self.get_by_id(pdv['id'])
             
             if pdv['id'] == 0:
                 raise BadRequest('Please fill in all the information to register your partner.') 
             
+            id_exists = self.get_by_id(pdv['id'])
             if id_exists:
                 raise BadRequest(f"The pdv '{pdv['tradingName']}' couldn't be registered. Motive: id '{pdv['id']}' already exists.")
                         
