@@ -11,7 +11,6 @@ from flask_graphql import GraphQLView
 def create_app(config_filename=None):
     app = Flask(__name__)
     CORS(app, resources={r"/*": {"origins": "*"}})
-    # app.wsgi_app = CheckUserToken(app.wsgi_app)
 
     connect_string = config_db()['database_uri']
     app.config['SQLALCHEMY_DATABASE_URI'] = connect_string
@@ -26,8 +25,6 @@ def create_app(config_filename=None):
     
 
     app.register_blueprint(blueprint)
-    
-    # plug teardown routines
     app.teardown_appcontext(shutdown_session)
     return app
 

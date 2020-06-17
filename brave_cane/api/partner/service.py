@@ -1,4 +1,3 @@
-# from brave_cane.api.partner.controller import Partner
 from brave_cane.database.models import PDV
 from math import radians, cos, sin, asin, sqrt
 from shapely.geometry import Point

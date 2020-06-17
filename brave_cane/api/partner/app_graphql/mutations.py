@@ -34,10 +34,6 @@ class RegisterPdv(Mutation):
         save_pdv = PartnerResolvers().pdv_resolver_save_pdv(id=id, tradingName=tradingName, ownerName=ownerName, 
                          document=document, coverageArea=coverageArea, address=address)
         
-        # if save_pdv['status'] == False:
-        if not save_pdv:
-            raise GraphQLError(f'{save_pdv["msg"]} - err: {save_pdv["err"]}')
-        
         return RegisterPdv(pdvs=pdv)
     
 class MutationPDV(ObjectType):
