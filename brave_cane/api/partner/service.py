@@ -26,8 +26,8 @@ class PartnerServices:
         return multiPolygonsFormated
     
     def format_point(self, point):
-        lat = float(point['lat'])
-        lng = float(point['lng'])
+        lat = float(point.get('lat'))
+        lng = float(point.get('lng'))
         
         return (lat, lng)
     
@@ -40,11 +40,11 @@ class PartnerServices:
     def check_partner_area(self, pdvs, client):
         partner = []
         for pdv in pdvs:
-            multipolygon = pdv['coverageArea']['coordinates']
+            multipolygon = pdv.get('coverageArea').get('coordinates')
             for polygon in multipolygon:
                 contains = self.client_contains_area(self.format_polygon(polygon), self.format_point(client))
                 if contains:
-                    partner.append(pdv['id'])
+                    partner.append(pdv.get('id'))
                     
         return partner
 
@@ -53,14 +53,14 @@ class PartnerServices:
         distances = []
         for pdv in nearest:
             partner = PDV.get(id=pdv).as_dict()
-            coordinates = partner['address']['coordinates']
+            coordinates = partner.get('address').get('coordinates')
             p = {'lat': float(coordinates[0]), 'lng': float(coordinates[1])}
             distance = self.distance_between_points(client, p)
             distances.append({'id': pdv, 'distance': distance})
             
         if distances:
             nearest = sorted(distances, key=lambda k: k['distance'])[0]
-            nearest_partner = PDV.get(id=nearest['id']).as_dict()
+            nearest_partner = PDV.get(id=nearest.get('id')).as_dict()
             
             return nearest_partner
         else:

@@ -12,7 +12,7 @@ class TesteRegisterPartner(unittest.TestCase):
 
     def test_payload_datatypes(self):
         partner_mock = {
-            "id": 13,
+            "id": 29,
             "tradingName": "Teste",
             "ownerName": "Teste",
             "document": "00000000000191",
@@ -51,24 +51,24 @@ class TesteRegisterPartner(unittest.TestCase):
                 }
             }
 
-        self.assertEqual(type(partner_mock['id']), type(0))
-        self.assertEqual(type(partner_mock['tradingName']), type(''))
-        self.assertEqual(type(partner_mock['ownerName']), type(''))
-        self.assertEqual(type(partner_mock['document']), type(''))
-        self.assertEqual(type(partner_mock['coverageArea']), dict)
-        self.assertEqual(type(partner_mock['address']), dict)
-        self.assertEqual(type(partner_mock['coverageArea']['type']), type(''))
-        self.assertEqual(type(partner_mock['coverageArea']['coordinates']), list)
-        self.assertEqual(type(partner_mock['address']['type']), type(''))
-        self.assertEqual(type(partner_mock['address']['coordinates']), list)
+        self.assertEqual(type(partner_mock.get('id')), type(0))
+        self.assertEqual(type(partner_mock.get('tradingName')), type(''))
+        self.assertEqual(type(partner_mock.get('ownerName')), type(''))
+        self.assertEqual(type(partner_mock.get('document')), type(''))
+        self.assertEqual(type(partner_mock.get('coverageArea')), dict)
+        self.assertEqual(type(partner_mock.get('address')), dict)
+        self.assertEqual(type(partner_mock.get('coverageArea').get('type')), type(''))
+        self.assertEqual(type(partner_mock.get('coverageArea').get('coordinates')), list)
+        self.assertEqual(type(partner_mock.get('address').get('type')), type(''))
+        self.assertEqual(type(partner_mock.get('address').get('coordinates')), list)
         
-        for polygons in partner_mock['coverageArea']['coordinates']:
+        for polygons in partner_mock.get('coverageArea').get('coordinates'):
             for polygon in polygons:
                 for point in polygon:
                     for p in point:
                         self.assertEqual(type(p), type(0.0))
                         
-        for point in partner_mock['address']['coordinates']:
+        for point in partner_mock.get('address').get('coordinates'):
             self.assertEqual(type(point), type(0.0))
 
 
