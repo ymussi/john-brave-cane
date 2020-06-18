@@ -60,7 +60,7 @@ class PartnerServices:
             
         if distances:
             nearest = sorted(distances, key=lambda k: k['distance'])[0]
-            nearest_partner = PDV.get(id=nearest['id']).as_dict()
+            nearest_partner = PDV.get(id=nearest.get('id')).as_dict()
             
             return nearest_partner
         else:
