@@ -133,3 +133,5 @@ Search the nearest partner with a specifc location coordinates
 lat = -23.595542907714844
 lng = -46.63741527750914
 ```
+
+Copyright (c) [2020] [Yuri Mussi]
